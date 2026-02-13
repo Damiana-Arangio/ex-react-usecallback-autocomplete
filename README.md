@@ -1,16 +1,76 @@
-# React + Vite
+<p align="center">
+  <img src="public/boolean-logo.png" alt="Boolean logo" width="35">
+</p>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<h1 align="center">EX – Autocomplete (React)</h1>
 
-Currently, two official plugins are available:
+Esercizio React sviluppato con **Vite**, focalizzato sull’ottimizzazione delle performance tramite `useCallback` e sull’implementazione di una ricerca intelligente con **debounce**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Il progetto è strutturato seguendo **milestone incrementali**, per mostrare il passaggio da una semplice ricerca dinamica a un’implementazione ottimizzata che riduce le chiamate API inutili.
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Obiettivo dell’esercizio
 
-## Expanding the ESLint configuration
+- Creare un campo di ricerca dinamico
+- Recuperare dati da un’API locale
+- Mostrare suggerimenti in tempo reale
+- Ottimizzare le chiamate API con debounce
+- Stabilizzare le funzioni con `useCallback`
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## Descrizione generale
+
+L’applicazione implementa un **campo di ricerca con autocomplete**, simile a quello utilizzato negli e-commerce.
+
+Quando l’utente digita:
+- vengono mostrati suggerimenti dinamici sotto l’input
+- la ricerca viene ritardata di 300ms
+- vengono evitate chiamate API ad ogni singola digitazione
+
+L’esercizio è pensato per rafforzare i concetti di **closure, debounce e stabilizzazione delle funzioni in React**.
+
+---
+
+## Anteprima
+
+![Screenshot](public/screenshot.png)
+
+---
+
+## 📌 Milestone 1: Ricerca con suggerimenti dinamici
+
+**Obiettivo:** Mostrare suggerimenti in base al testo digitato.
+
+### Requisiti
+
+1. Creare un campo `<input type="text">`.
+2. Effettuare una chiamata API a:  
+   `http://localhost:3333/products?search=[query]`
+3. Salvare i risultati in uno stato React tramite `useState`.
+4. Mostrare i suggerimenti sotto l’input in una tendina.
+5. Nascondere la tendina quando l’input è vuoto.
+
+---
+
+## 📌 Milestone 2: Ottimizzazione con Debounce
+
+**Obiettivo:** Ridurre il numero di richieste API e migliorare le performance.
+
+### Requisiti
+
+1. Implementare una funzione `debounce` generica.
+2. Ritardare la chiamata API di 300ms.
+3. Eseguire la ricerca solo dopo un breve periodo di inattività.
+4. Utilizzare `useCallback` per stabilizzare la funzione debounced.
+5. Evitare chiamate API ad ogni pressione di tasto.
+
+---
+
+
+## Tecnologie utilizzate
+
+- React
+- Vite
+- Postman (test API locale)
